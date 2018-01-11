@@ -1,0 +1,64 @@
+﻿@using MyEvernote.Web.ViewModels
+@using MyEvernote.Entities.Messages
+@model ErrorViewModel
+@{
+    ViewBag.Title = Model.Title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
+    <!-- Website CSS style -->
+    <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+    <!-- Website Font style -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <link href="~/Content/Registercss.css" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+    <title>Üye Kayıt </title>
+</head>
+<body>
+    <div class="container">
+        <div class="row main">
+            <div class="panel-heading">
+                <div class="panel-title text-center">
+                    <h1 class="title">@Model.Header</h1>
+                    <hr />
+                </div>
+            </div>
+
+            <div class="main-login main-center">
+                <div class="form-group">
+                    <div class="cols-sm-10 text-danger">
+                        <h4>@Model.Title <span class="glyphicon glyphicon-remove-circle"></span></h4>
+                        <p class="text-justify">
+                            @foreach (ErrorMessageObj msg in Model.Items)
+                            {
+                                @msg.Message <br />
+                            }
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @{
+        string js = string.Empty;
+        if (Model.IsRedirecting)
+        {
+            js = "setTimeout(function () { window.location = '" + Model.RedirectingUrl + "';}, " + Model.RedirectingTimeout + ");";
+        }
+    }
+    <script>
+        $(function () {
+            @Html.Raw(js);
+
+        });
+    </script>
+    <script type="text/javascript" src="assets/js/bootstrap.js"></script>
+</body>
+</html>

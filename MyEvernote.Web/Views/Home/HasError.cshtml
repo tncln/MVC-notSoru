@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "Yetkisiz Erişim İsteği";
+}
+
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        @{ 
+            Exception ex = null;
+            if (TempData["LastError"]!=null)
+            {
+                ex = TempData["LastError"] as Exception;
+            }
+        }
+        <h1><span class="glyphicon glyphicon-remove-circle"></span> Hata Oluştu</h1>
+        <p>
+            Hata oluştu, lütfen site yöneticisi ile iletişime geçiniz..
+            <br /> <br />
+            @if (ex!=null)
+            {
+                <strong>Hata Detay:</strong>
+                @ex.Message
+                <br /><br />
+            }
+            <a href="/Home/Index" class="btn btn-primary"> Ana Sayfa</a>
+            <a href="mailto:info.mystils@gmail.com" class="btn btn-success"> Email Gönder</a>
+        </p>
+    </div>
+</div>
+

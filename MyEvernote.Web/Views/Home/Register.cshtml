@@ -1,0 +1,90 @@
+﻿@using MyEvernote.Entities.ValueObjects
+@model RegisterViewModel
+@{
+    ViewBag.Title = "Kayıt Ol";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
+    <!-- Website CSS style -->
+    <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+    <!-- Website Font style -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <link href="~/Content/Registercss.css" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+    <title>Üye Kayıt </title>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        <div class="container">
+        <div class="row main">
+            <div class="panel-heading">
+                <div class="panel-title text-center">
+                    <h3 class="title">Üye Kayıt</h3>
+                    <hr />
+                </div>
+            </div>
+            
+            <div class="main-login main-center">
+                
+                <form class="form-horizontal" method="post" action="#">
+                    @Html.ValidationSummary(false)
+                       
+                   <br />
+                    <div class="form-group">
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                               @Html.TextBoxFor(model => model.UserName, new { @class = "form-control", placeholder = "Kullanıcı Adınız.." })
+                                @*<input type="text" class="form-control" name="name" id="name" placeholder="Enter your Name" />*@
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                                @Html.TextBoxFor(model => model.Email, new { @class = "form-control", placeholder = "E-mail Adresinizi Giriniz.." })
+                                @*<input type="text" class="form-control" name="email" id="email" placeholder="Enter your Email" />*@
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                                @Html.TextBoxFor(model => model.Password, new { @class = "form-control", placeholder = "Şifreniz..", type = "password" })
+                                @*<input type="text" class="form-control" name="username" id="username" placeholder="Enter your Username" />*@
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                                @Html.TextBoxFor(model => model.RePassword, new { @class = "form-control", placeholder = "Şifreniz (Tekrar)..", type = "password" })
+                                @*<input type="password" class="form-control" name="password" id="password" placeholder="Enter your Password" />*@
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Kayıt Ol</button>
+                    </div>
+                    <div class="login-register">
+                        <a href="/Home/Login">Giriş Yap</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    }
+    <script type="text/javascript" src="assets/js/bootstrap.js"></script>
+</body>
+</html>
